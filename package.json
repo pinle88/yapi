@@ -1,6 +1,6 @@
 {
   "name": "yapi-vendor",
-  "version": "1.4.4",
+  "version": "1.5.6",
   "description": "YAPI",
   "main": "server/app.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "start": " node server/app.js",
     "test": "ava",
     "build-client": "NODE_ENV=production ykit pack -m",
-    "npm-publish": "node ./npm-publish.js"
+    "npm-publish": "node ./npm-publish.js",
+    "docs": "ydoc build"
   },
   "scripts-info": {
     "start": "运行生产环境服务器",
