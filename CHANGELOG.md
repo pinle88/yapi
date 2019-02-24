@@ -1,6 +1,29 @@
+### v1.5.6
+* 修复 /api/open/import_data 参数bug
+* 修复  /api/open/import_data 文档错误，merge 参数误写为 dataSync
+
+### v1.5.5
+* cross-request 升级到 2.10
+* /api/open/import_data 新增 url 参数，支持服务端 url 导入
+
+### v1.5.2
+* 新增 openapi `/api/project/get`，可获取项目基本信息
+
+### v1.5.1
+
+* 优化 restful api 动态路由权重匹配算法，匹配更加精确
+* openapi 新增 `/api/interface/list_cat`，获取某个分类下所有接口
+* 新增了 rap数据导入到 yapi 插件 [rap2yapi](https://github.com/wxxcarl/yapi-plugin-import-rap)
+
+### v1.5.0
+
+* 优化开放 api功能，现在 token 带有用户信息了
+* 修复无法获取请求302 跳转前的 headers
+
 ### v1.4.4
 * 优化了 json-schema 编辑器交互，修复了参数名写到一半提示重复的问题
 * 优化了首页体验，提升页面打开速度
+* 新增自动化测试通用规则配置功能
 
 ### v1.4.3
 * 修复了可视化安装，mongodb 报错的问题
@@ -503,3 +526,7 @@
 
 * 接口备注集成了富文本编辑
 * 支持 har 协议的接口数据导入
+
+
+todo:
+新增 crypto 加密函数
