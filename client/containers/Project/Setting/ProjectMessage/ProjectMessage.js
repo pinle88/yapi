@@ -244,6 +244,8 @@ class ProjectMessage extends Component {
       is_json5,
       tag
       ,zf_version
+      ,zf_master
+      ,zf_from_id
     } = projectMsg;
     initFormValues = {
       name,
@@ -256,6 +258,8 @@ class ProjectMessage extends Component {
       is_json5,
       tag
       ,zf_version
+      ,zf_master
+      ,zf_from_id
     };
 
     const colorArr = entries(constants.PROJECT_COLOR);
@@ -318,7 +322,10 @@ class ProjectMessage extends Component {
           <hr className="breakline" />
           <Form>
             <FormItem {...formItemLayout} label="项目ID">
-              <span>{this.props.projectMsg._id + initFormValues.zf_new + initFormValues.zf_from_id + initFormValues.zf_master}</span>
+              <span>{this.props.projectMsg._id}</span>
+              <span>{initFormValues.zf_from_id}</span>
+              <span>{initFormValues.zf_master}</span>
+
             </FormItem>
             <FormItem {...formItemLayout} label="项目名称">
               {getFieldDecorator('name', {
@@ -477,6 +484,7 @@ class ProjectMessage extends Component {
                     <Icon type="unlock" />公开<br />
                     <span className="radio-desc">任何人都可以索引并查看项目信息</span>
                   </Radio>}
+
                 </RadioGroup>
               )}
             </FormItem>

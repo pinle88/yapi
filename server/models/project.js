@@ -35,7 +35,10 @@ class projectModel extends baseModel {
       is_mock_open: { type: Boolean, default: false },
       strice: { type: Boolean, default: false },
       is_json5: { type: Boolean, default: true },
-      tag: [{name: String, desc: String}]
+      tag: [{name: String, desc: String}],
+      zf_version: { type: String, required: true },
+      zf_master: { type: Boolean, default: false },
+      zf_from_id: Number
     };
   }
 
@@ -85,7 +88,7 @@ class projectModel extends baseModel {
   getBaseInfo(id, select) {
     select =
       select ||
-      '_id uid name basepath switch_notice desc group_id project_type env icon color add_time up_time pre_script after_script project_mock_script is_mock_open strice is_json5 tag';
+      '_id uid name basepath switch_notice desc group_id project_type env icon color add_time up_time pre_script after_script project_mock_script is_mock_open strice is_json5 tag zf_version zf_master zf_from_id';
     return this.model
       .findOne({
         _id: id

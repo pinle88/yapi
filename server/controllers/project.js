@@ -53,6 +53,10 @@ class projectController extends baseController {
     const env = 'array';
 
     const cat = 'array';
+
+    const zf_version = 'string';
+    // const zf_master = 'boolean';
+    // const zf_from_id = 'number';
     this.schemaMap = {
       add: {
         '*name': name,
@@ -62,7 +66,8 @@ class projectController extends baseController {
         desc: desc,
         color,
         icon,
-        project_type
+        project_type,
+        '*zf_version': zf_version
       },
       copy: {
         '*name': name,
@@ -78,7 +83,10 @@ class projectController extends baseController {
         desc,
         color,
         icon,
-        project_type
+        project_type,
+        '*zf_version': zf_version,
+        '*zf_master': false,
+        '*zf_from_id': id
       },
       addMember: {
         '*id': id,
@@ -218,7 +226,10 @@ class projectController extends baseController {
       add_time: yapi.commons.time(),
       up_time: yapi.commons.time(),
       is_json5: false,
-      env: [{ name: 'local', domain: 'http://127.0.0.1' }]
+      env: [{ name: 'local', domain: 'http://127.0.0.1' }],
+      zf_version: params.zf_version,
+      zf_master: true,
+      zf_from_id: 0
     };
 
     let result = await this.Model.save(data);
@@ -297,6 +308,8 @@ class projectController extends baseController {
         env: params.env || [{ name: 'local', domain: 'http://127.0.0.1' }]
       });
 
+      data.zf_from_id=data._id //复制来源的id
+      data.zf_master=false
       delete data._id;
       let result = await this.Model.save(data);
       let colInst = yapi.getInst(interfaceColModel);
@@ -781,7 +794,9 @@ class projectController extends baseController {
         desc: 'string',
         pre_script: 'string',
         after_script: 'string',
-        project_mock_script: 'string'
+        project_mock_script: 'string',
+        zf_version: 'string',
+        zf_from_id: 'number'
       });
 
       if (!id) {

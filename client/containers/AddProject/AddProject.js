@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form, Input, Icon, Tooltip, Select, message, Row, Col, Radio } from 'antd';
+import {Button, Form, Input, Icon, Tooltip, Select, message, Row, Col, Radio} from 'antd';
 import { addProject } from '../../reducer/modules/project.js';
 import { fetchGroupList } from '../../reducer/modules/group.js';
 import { autobind } from 'core-decorators';
@@ -115,6 +115,15 @@ class ProjectList extends Component {
               })(<Input />)}
             </FormItem>
 
+            <FormItem {...formItemLayout} label="版本">
+              {getFieldDecorator('zf_version', {
+                rules: [
+                  {
+                    required: true
+                  }
+                ]
+              })(<Input />)}
+            </FormItem>
             <FormItem {...formItemLayout} label="所属分组">
               {getFieldDecorator('group', {
                 initialValue: this.state.currGroupId + '',
